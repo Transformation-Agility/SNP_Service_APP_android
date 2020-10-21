@@ -3,9 +3,7 @@ package com.example.snpserviceapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         myWebView = (WebView) findViewById(R.id.webview);
 
         //Set webview as client to be used for links and prevent browser from opening
-        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.setWebViewClient(new SNPWebViewClient(this));
 
         //Enable javascirpt, needed at least for Microsoft Sing-in
         myWebView.getSettings().setJavaScriptEnabled(true);
