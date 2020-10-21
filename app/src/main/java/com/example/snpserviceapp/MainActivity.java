@@ -17,31 +17,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // enable debugging to find out, why menu isn't working
-        WebView.setWebContentsDebuggingEnabled(true);
-
         //find webView element in activity
         myWebView = (WebView) findViewById(R.id.webview);
-        //set chrome as webview client In some cases this should help with missing content
-        myWebView.setWebChromeClient(new WebChromeClient());
-        WebSettings webSettings= myWebView.getSettings();
-        //Enable javascirpt, needed at least for Microsoft Sing-in
-        webSettings.setJavaScriptEnabled(true);
 
-        //In some cases this should help with missing content -> it didn't
-        //webSettings.setDomStorageEnabled(true);
-
-        //In other cases this should help with missing content-> it didn't
-//        webSettings.setLoadWithOverviewMode(true);
-//        webSettings.setUseWideViewPort(true);
-//        webSettings.setBuiltInZoomControls(true);
-//        webSettings.setDisplayZoomControls(false);
-//        webSettings.setSupportZoom(true);
-//        webSettings.setDefaultTextEncodingName("utf-8");
-
+        //Set webview as client to be used for links and prevent browser from opening
         myWebView.setWebViewClient(new WebViewClient());
+
+        //Enable javascirpt, needed at least for Microsoft Sing-in
+        myWebView.getSettings().setJavaScriptEnabled(true);
+
+        //Fake user-agent string to appear as a mobile browser and not a webview
+        //Otherwise Sharepoint wouldn't render the menu
+        myWebView.getSettings().setUserAgentString(
+                myWebView.getSettings().getUserAgentString()
+                .replaceAll("; wv", "" )
+                .replaceAll("Version.[0-9]{1,2}.[0-9]{0,2} ", "" ));
+
+        //Load app landing page
         myWebView.loadUrl("https://snpcom.sharepoint.com/GlobalFunctions/administration/SNP%20Service%20APP/SiteAssets/scripts/index.aspx");
-        //myWebView.loadUrl("https://snpcom.sharepoint.com/GlobalFunctions/administration/SNP%20Service%20APP/SitePages/Home.aspx");
 
     }
 
