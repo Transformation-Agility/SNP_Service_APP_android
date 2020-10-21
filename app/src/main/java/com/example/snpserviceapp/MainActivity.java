@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // enable debugging to find out, why menu isn't working
+        WebView.setWebContentsDebuggingEnabled(true);
+
         //find webView element in activity
         myWebView = (WebView) findViewById(R.id.webview);
         //set chrome as webview client In some cases this should help with missing content
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
 
         //In some cases this should help with missing content -> it didn't
-        webSettings.setDomStorageEnabled(true);
+        //webSettings.setDomStorageEnabled(true);
 
         //In other cases this should help with missing content-> it didn't
 //        webSettings.setLoadWithOverviewMode(true);
@@ -35,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
 //        webSettings.setDisplayZoomControls(false);
 //        webSettings.setSupportZoom(true);
 //        webSettings.setDefaultTextEncodingName("utf-8");
-        myWebView.loadUrl("https://snpcom.sharepoint.com/GlobalFunctions/administration/SNP%20Service%20APP/SiteAssets/scripts/index.aspx");
+
         myWebView.setWebViewClient(new WebViewClient());
+        myWebView.loadUrl("https://snpcom.sharepoint.com/GlobalFunctions/administration/SNP%20Service%20APP/SiteAssets/scripts/index.aspx");
+        //myWebView.loadUrl("https://snpcom.sharepoint.com/GlobalFunctions/administration/SNP%20Service%20APP/SitePages/Home.aspx");
+
     }
 
     @Override
