@@ -1,4 +1,4 @@
-package com.example.snpserviceapp;
+package com.snpgroup.snpserviceapp;
 
 import android.app.Activity;
 import android.content.Context;

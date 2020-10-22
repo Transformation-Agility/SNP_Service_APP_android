@@ -1,4 +1,4 @@
-package com.example.snpserviceapp;
+package com.snpgroup.snpserviceapp;
 
 import org.junit.Test;
 

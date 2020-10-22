@@ -1,10 +1,9 @@
-package com.example.snpserviceapp;
+package com.snpgroup.snpserviceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
