@@ -34,11 +34,11 @@ public class SNPWebViewClient extends WebViewClient {
 
             Intent sendIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("msteams://teams.microsoft.com/l/chat/0/0?users=" + url.substring(4)));
-            if (sendIntent.resolveActivity(packageManager) != null) {
-                activity.startActivity(sendIntent);
-                view.reload();
-                return true;
+            if (sendIntent.resolveActivity(packageManager) == null) {
+                sendIntent.setData(Uri.parse("https://teams.microsoft.com/l/chat/0/0?users=" + url.substring(4)));
             }
+            activity.startActivity(sendIntent);
+            return true;
         } else {
             view.loadUrl(url);
         }
