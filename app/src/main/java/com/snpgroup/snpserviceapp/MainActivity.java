@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 .replaceAll("; wv", "" )
                 .replaceAll("Version.[0-9]{1,2}.[0-9]{0,2} ", "" ));
 
+        myWebView.getSettings().setDomStorageEnabled(true);
+
         //Load app landing page
         myWebView.loadUrl("https://snpcom.sharepoint.com/GlobalFunctions/administration/SNP%20Service%20APP/SiteAssets/scripts/index.aspx");
 
